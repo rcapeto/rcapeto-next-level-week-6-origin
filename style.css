@@ -22,6 +22,10 @@ a {
    text-decoration: none;
 }
 
+html {
+   scroll-behavior: smooth;
+}
+
 body {
    font-weight: 400;
    font-size: 1rem;
@@ -31,7 +35,7 @@ body {
    -webkit-font-smoothing: antialiased !important;
 }
 
-h1 {
+.title {
    font: 700 1.875rem 'Poppins', sans-serif;
    color: var(--title-color);
 }
@@ -43,7 +47,11 @@ h1 {
 }
 
 main {
-   margin-top: var(--header-height);
+   margin-top: calc(var(--header-height) + 2rem);
+}
+
+ul {
+   list-style: none;
 }
 
 .button {
@@ -71,6 +79,14 @@ main {
    padding: 5rem 0;
 }
 
+.section header {
+   margin-bottom: 4rem;
+}
+
+.section header strong {
+   color: var(--base-color);
+}
+
 .grid {
    display: grid;
    gap: 2rem;
@@ -79,6 +95,11 @@ main {
 .divider-1 {
    background: linear-gradient(270deg, hsla(var(--hue), 36%, 57%, 1) 0%, hsla(var(--hue), 65%, 88%, .34) 100%);
    height: 1px;
+}
+
+.divider-2 {
+   height: 1px;
+   background: linear-gradient(270deg, hsla(var(--hue), 65%, 88%, .34) 0%,  hsla(var(--hue), 36%, 57%, 1) 100%);
 }
 
 .header {
@@ -108,16 +129,116 @@ main {
    height: var(--header-height);
 }
 
+
+nav .menu {
+   opacity: 0;
+   visibility: hidden;
+}
+
+nav .menu ul li a {
+   transition: color .2s ease;
+}
+
+nav .menu ul li a:hover {
+   color: var(--base-color);
+   position: relative;
+}
+
+nav.container {
+   transition: all ease .5s;
+}
+
+nav.container .open img {
+   cursor: pointer;
+}
+
+nav .menu ul li a::after {
+   width: 0;
+   content: '';
+   height: 2px;
+   background-color: var(--base-color);
+   position: absolute;
+   left: 0;
+   bottom: -1.5rem;
+   transition: width .4s ease;
+} 
+
+nav .menu ul li a:hover::after {
+   content: '';
+   width: 100%;
+}
+
+@keyframes headerAnimation {
+   from {
+      opacity: 0;
+      transform: translateY(-100px);
+   } to {
+      opacity: 1;
+      transform: translateY(0px);
+   }
+}
+
+nav.show .menu {
+   opacity: 1;
+   visibility: visible;
+   background-color: var(--body-color);
+   height: 100vh;
+   width: 100vw;
+   position: fixed;
+   left: 0;
+   top: 0;
+   display: flex;
+   flex-direction: column;
+}
+
+nav.show .menu .nav-items {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 4rem;
+   animation: headerAnimation forwards .3s;
+}
+
+nav.show .menu .close {
+   padding: 1.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+}
+
+nav.show .menu .close img {
+   width: 1.5rem;
+   height: 1.5rem;
+   cursor: pointer;
+}
+
+nav.show .menu ul {
+   gap: 4rem;
+}
+
+
+/* PAGES */
+
+#about {
+   background-color: #fff;
+}
+
+#about,
 #home {
    overflow: hidden;
 }
 
+#about .container,
 #home .container {
    margin: 0;
 }
 
+#about .image,
 #home .image {
    position: relative;
+   width: 100%;
 }
 
 #home .image::before {
@@ -130,25 +251,82 @@ main {
    right: -16.7%;
 }
 
+#about .image::before {
+   content: '';
+   width: 100%;
+   height: 100%;
+   background: var(--base-color-second);
+   position: absolute;
+   top: -8.3%;
+   left: -33%;
+}
+
+#about .image img,
 #home .image img {
    position: relative;
    right: 2.93rem;
 }
 
+#about .image img {
+   right: 0;
+   width: 110%;
+}
+
+#about .image::before,
+#about .image img,
 #home .image::before,
 #home .image img {
    border-radius: .25rem;
 }
 
+#about .text,
 #home .text {
    margin: 0 1.5rem;
    text-align: center;
 }
 
+#about .text {
+   text-align: initial;
+}
+
+#about .text h2,
 #home .text h1 {
    margin-bottom: 1rem;
 }
 
+#about .text p,
 #home .text p {
    margin-bottom: 2rem;
+}
+
+#services .cards.grid {
+   gap: 1.5rem;
+}
+
+#services .card {
+   padding: 3.625rem 2rem;
+   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+   border-bottom: .25rem solid var(--base-color);
+   border-radius: .25rem .25rem 0 0;
+   text-align: center;
+}
+
+#services .card .icon {
+   margin-bottom: 1.5rem;
+}
+
+#services .card .title {
+   margin-bottom: .8rem;
+   font-size: 1.5rem;
+}
+
+#services .card .icon img {
+   width: 80px;
+   height: 80px;
+}
+
+#services .card p {
+   font-size: 1rem;
+   color: var(--text-color);
+   line-height: 1.3rem;
 }
