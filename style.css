@@ -113,13 +113,17 @@ ul {
    top: 0;
 }
 
-.header .logo {
+.logo {
    font: 700 1.875rem 'Poppins', sans-serif;
    color: var(--title-color);
 }
 
-.header .logo span {
+.logo span {
    color: var(--base-color);
+}
+
+.logo.alt span {
+   color: var(--body-color);
 }
 
 .header nav {
@@ -413,4 +417,83 @@ nav.show .menu ul {
 #contact ul.grid li {
    display: flex;
    align-items: center;
+}
+
+/* Footer */
+footer {
+   background-color: var(--base-color);
+}
+
+footer .container.grid {
+   gap: 0;
+   display: flex;
+   flex-direction: column;
+}
+
+footer .logo {
+   display: block;
+   margin-bottom: 1.5rem;
+   font-size: 1.31rem;
+}
+
+footer .brand p {
+   color: var(--text-color-light);
+   margin-bottom: .75rem;
+   font-size: 1rem;
+   line-height: 1.2rem;
+   font-weight: 400;
+   font-family: 'DM Sans', sans-serif;
+}
+
+footer .socials {
+   display: flex;
+   align-items: center;
+   gap: 2rem;
+}
+
+footer .socials img {
+   width: 1.5rem;
+   height: 1.5rem;
+}
+
+.btn-up {
+   background-color: var(--base-color);
+   width: 1.5rem;
+   height: 1.5em;
+   position: fixed;
+   border: 1px solid #000;
+   bottom: 1rem;
+   right: 1rem;
+   cursor: pointer;
+   padding: 1rem;
+   border-radius: 50%;
+   font-size: 1.5rem;
+   color: #000;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: Arial;
+   transition: all 1s ease;
+   visibility: hidden;
+   opacity: 0;
+   transform: translateY(-100px);
+}
+
+.btn-up.show {
+   visibility: visible;
+   opacity: 1;
+   transform: translateY(0px);
+}
+
+/* Responsivo 
+   extra-large devices: 1200 > 
+   large devices: 1023 >
+   large devices: 992 >
+   medium devices: 767 >
+   small devices: 767 <
+*/
+@media(min-width: 992px) {
+   .title {
+      font-size: 2.2rem;
+   }
 }

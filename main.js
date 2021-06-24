@@ -59,3 +59,25 @@ scrollReveal.reveal(
    `, 
    { interval: 100 }
 );
+
+//button-up
+const buttonUp = document.querySelector('.btn-up');
+
+
+window.addEventListener('scroll', function(event) {
+   const top = window.pageYOffset;
+
+   if(top > 700) {
+      buttonUp.classList.add('show');
+      buttonUp.addEventListener('click', goToTop);
+   } else {
+      buttonUp.removeEventListener('click', goToTop);
+      buttonUp.classList.remove('show');
+   }
+});
+
+function goToTop(event) {
+   event.preventDefault();
+   const id = this.getAttribute('data-go');
+   document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
