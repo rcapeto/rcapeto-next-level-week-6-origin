@@ -22,14 +22,14 @@
             <a href="#" class="logo">beauty<span>salon</span>.</a>
             <div class="menu" role="menu" aria-expanded="false">
                <div class="close toggle" aria-label="Fechar Menu" aria-controls="menu">
-                  <img src="./assets/close.svg" alt="Fechar Menu">
+                  <img src="./assets/close.svg" alt="Fechar Menu" data-close>
                </div>
                <ul class="nav-items">
-                  <li><a class="title" href="#home">Início</a></li>
-                  <li><a class="title" href="#about">Sobre</a></li>
-                  <li><a class="title" href="#services">Serviços</a></li>
-                  <li><a class="title" href="#testimonials">Depoimentos</a></li>
-                  <li><a class="title" href="#contact">Contato</a></li>
+                  <li><a class="title active" href="#home" data-btn-nav="home">Início</a></li>
+                  <li><a class="title" href="#about" data-btn-nav="about">Sobre</a></li>
+                  <li><a class="title" href="#services" data-btn-nav="services">Serviços</a></li>
+                  <li><a class="title" href="#testimonials" data-btn-nav="testimonials">Depoimentos</a></li>
+                  <li><a class="title" href="#contact" data-btn-nav="contact">Contato</a></li>
                </ul>
             </div>
 
@@ -40,7 +40,7 @@
       </header>
 
       <main>
-         <section class="section" id="home">
+         <section class="section" id="home" data-nav="home">
             <div class="container grid">
               <div class="image">
                   <img 
@@ -60,7 +60,7 @@
 
          <div class="divider-1"></div>
 
-         <section class="section" id="about">
+         <section class="section" id="about" data-nav="about">
             <div class="container grid">
                <div class="image">
                   <img 
@@ -96,11 +96,11 @@
 
          <div class="divider-2"></div>
 
-         <section class="section" id="services">
+         <section class="section" id="services" data-nav="services">
             <div class="container grid">
                <header>
                   <h2 class="title">Serviços</h2>
-                  <p>
+                  <p class="subtitle">
                      Com mais de 10 anos no mercado, o <strong>Beautysalon</strong> já conquistou clientes 
                      de inúmeros países com seus tratamentos exclusivos e totalmente naturais
                   </p>
@@ -149,7 +149,7 @@
 
          <div class="divider-1"></div>
 
-         <section class="section" id="testimonials">
+         <section class="section" id="testimonials" data-nav="testimonials">
             <div class="container">
                <header>
                   <h2 class="title">Depoimentos de quem já passou por aqui</h2>
@@ -213,7 +213,7 @@
 
          <div class="divider-2"></div>
 
-         <section class="section" id="contact">
+         <section class="section" id="contact" data-nav="contact">
             <div class="container grid">
                <div class="text">
                   <h2 class="title">Entre em contato com a gente!</h2>

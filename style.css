@@ -11,11 +11,14 @@
    --text-color: hsl(0 0% 46%);
    --text-color-light: hsl(0 0% 98%);
    --body-color: hsl(0 0% 98%);
+   --subtitle-font-size: 1rem;
+   --title-font-size: 1.875rem;
 }
 
 img {
    width: 100%;
    height: auto;
+   object-fit: cover;
 }
 
 a {
@@ -36,8 +39,12 @@ body {
 }
 
 .title {
-   font: 700 1.875rem 'Poppins', sans-serif;
+   font: 700 var(--title-font-size) 'Poppins', sans-serif;
    color: var(--title-color);
+}
+
+.subtitle {
+   font-size: var(--subtitle-font-size);
 }
 
 * {
@@ -76,7 +83,7 @@ ul {
 }
 
 .section {
-   padding: 5rem 0;
+   padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section header {
@@ -141,6 +148,7 @@ nav .menu {
 
 nav .menu ul li a {
    transition: color .2s ease;
+   position: relative;
 }
 
 nav .menu ul li a:hover {
@@ -156,6 +164,11 @@ nav.container .open img {
    cursor: pointer;
 }
 
+nav .menu ul li a.active {
+   color: var(--base-color);
+}
+
+nav .menu li a.active::after,
 nav .menu ul li a::after {
    width: 0;
    content: '';
@@ -167,6 +180,7 @@ nav .menu ul li a::after {
    transition: width .4s ease;
 } 
 
+nav .menu li a.active::after,
 nav .menu ul li a:hover::after {
    content: '';
    width: 100%;
@@ -221,7 +235,6 @@ nav.show .menu .close img {
 nav.show .menu ul {
    gap: 4rem;
 }
-
 
 /* PAGES */
 
@@ -395,12 +408,16 @@ nav.show .menu ul {
    background: var(--base-color);
 }
 
-#contact.grid {
+#contact .grid {
    gap: 4rem;
 }
 
 #contact .text p {
    margin-bottom: 2rem;
+}
+
+#contact .title {
+   padding-bottom: 1rem;
 }
 
 #contact .links img,
@@ -422,6 +439,10 @@ nav.show .menu ul {
 /* Footer */
 footer {
    background-color: var(--base-color);
+}
+
+footer.section {
+   padding: 4rem 0;
 }
 
 footer .container.grid {
@@ -492,8 +513,125 @@ footer .socials img {
    medium devices: 767 >
    small devices: 767 <
 */
+
+@media(min-width: 1200px) {
+   main {
+      margin-top: var(--header-height);
+   }
+
+   nav .menu {
+      opacity: 1;
+      visibility: visible;
+      top: 0;
+   }   
+
+   nav .menu ul {
+      display: flex;
+      gap: 2rem;
+   }
+
+   nav .menu ul li a.title {
+      font-weight: 400;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif
+   }
+
+   nav .open {
+      display: none;
+   }
+
+   [data-close] {
+      display: none;
+   }
+
+   #home .image {
+     order: 1;
+     max-width: 640px;
+   }
+
+   #home .text {
+      order: 0; /* só é possivel em flex e grid */
+   }
+
+   #home .container {
+      grid-auto-flow: column; /* deixar do lado */
+      justify-content: space-between;
+      max-width: 1120px;
+      gap: 4rem;
+      margin-left: auto;
+      margin-right: auto;
+   }
+
+   #about .text {
+      order: 1;
+   }
+
+   #about .image {
+      order: 0;
+      max-width: 640px;
+   }
+
+   #about .container {
+      grid-auto-flow: column;
+      justify-content: space-between;
+      max-width: 1220px;
+      gap: 4rem;
+      margin-left: auto;
+      margin-right: auto;
+   }
+
+   #about .image {
+      order: 1;
+      max-width: 640px;
+    }
+
+   #contact > div.grid {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1220px;
+      gap: 4rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 0rem;
+   }
+   
+   #contact .title {
+     padding-left: 0 !important;
+   }
+
+   #testimonials .title {
+      text-align: center;
+   }
+
+   #services .cards.grid {
+      gap: 1.5rem;
+      grid-template-columns: repeat(3, 352px);
+      margin: 0 auto;
+   }
+   
+   #services .title,
+   #services .subtitle {
+      text-align: center;
+   }
+
+   #services .subtitle {
+      max-width: 523px;
+      margin: 0 auto;
+   }
+
+   footer .container.grid {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+   }
+}
+
 @media(min-width: 992px) {
-   .title {
-      font-size: 2.2rem;
+   :root {
+      --subtitle-font-size: 1.125rem;
+      --title-font-size: 2.25rem;
    }
 }
